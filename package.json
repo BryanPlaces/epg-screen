@@ -7,18 +7,19 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "watch": "react-scripts start",
-    "start:mock-api": ".\\node_modules\\.bin\\osprey-mock-service -f .\\node_modules\\nm-mock-api\\demo.raml -p 1337 --cors",
-    "start": "node .\\node_modules\\nm-mock-api\\scripts\\updateEpg.js && npm run start:mock-api"
+    "start:mock-api": "./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
+    "start": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@noriginmedia/norigin-spatial-navigation": "^2.0.1",
     "date-fns": "^2.30.0",
     "nm-mock-api": "git+https://github.com/NoriginMedia/mock-api.git#cloudberry",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "slick-carousel": "^1.8.1"
+    "sass": "^1.69.3"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

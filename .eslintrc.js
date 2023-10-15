@@ -29,7 +29,7 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "semi": ["error", "always"],
+        "semi": "off",
         'no-unused-vars': 'off',
         "react/prop-types": "off"
     }

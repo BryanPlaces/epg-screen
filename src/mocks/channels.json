@@ -1,0 +1,67 @@
+{
+  "channels": [
+    {
+      "id": "sky1",
+      "title": "Sky 1",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "silver",
+      "title": "Silver",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "hbo",
+      "title": "HBO",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "cw",
+      "title": "The CW",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "vox",
+      "title": "Vox",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "history",
+      "title": "History",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "sixx",
+      "title": "Sixx",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "tv2norway",
+      "title": "TV 2 Norway",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    },
+    {
+      "id": "channel5",
+      "title": "Channel 5",
+      "images": {
+        "logo": "hbo_logo.png"
+      }
+    }
+  ]
+}

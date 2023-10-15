@@ -1,0 +1,125 @@
+.dates-wrapper {
+  max-width: 100%;
+  display: flex;
+  height: 70px;
+  align-items: center;
+  border-bottom: 1px solid #393939;
+}
+
+.dates-scrolling-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  flex-shrink: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+}
+
+.date-item {
+  color: #9B9B9B;
+  padding: 0 10px;
+  &__focus {
+    @extend .date-item;
+    color: #FFFFFF
+  }
+}
+
+.star-container {
+  height: 100%;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.times-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  //border: 1px solid #393939;
+  color: #FFFFFF;
+  padding-top: 7px;
+}
+
+
+.times-item {
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.content-row-wrapper {
+  margin-bottom: 37px;
+}
+
+.content-row-title {
+  color: white;
+  margin-bottom: 22px;
+  font-size: 27px;
+  font-weight: 700;
+  font-family: 'Segoe UI';
+  padding-left: 60px;
+}
+
+.content-wrapper {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-title {
+  color: white;
+  font-size: 48px;
+  font-weight: 600;
+  font-family: 'Segoe UI';
+  text-align: center;
+  margin-top: 52px;
+  margin-bottom: 37px;
+}
+
+.selected-item-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-item-box {
+  height: 282px;
+  width: 1074px;
+  background-color: #565b6b;
+  margin-bottom: 37px;
+  border-radius: 7px;
+}
+
+.selected-item-title {
+  position: absolute;
+  bottom: 75px;
+  left: 100px;
+  color: white;
+  font-size: 27px;
+  font-weight: 400;
+  font-family: 'Segoe UI';
+}
+
+.scrolling-rows {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
