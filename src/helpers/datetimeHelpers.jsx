@@ -1,13 +1,14 @@
 import {
-  addDays,
-  startOfToday,
   format,
+  startOfToday,
   startOfDay,
   endOfDay,
+  addDays,
   eachHourOfInterval,
+  isWithinInterval,
+  parse,
   parseISO,
-  differenceInMilliseconds,
-  isWithinInterval
+  differenceInMinutes,
 } from 'date-fns';
 
 export const getDates = () => {
@@ -50,14 +51,41 @@ export const formatTimeRange = (startDate, endDate) => {
   return `${formattedStartTime} - ${formattedEndTime}`;
 }
 
+/**
+ * This function calculates the size of the Schedule, considering
+ * the size of each timebar, which is 400px by default.
+ * @param {*} start
+ * @param {*} end
+ * @returns
+ */
 export const getProgramTimeData = (start, end) => {
+    const startDate = new Date(start);
+  const endDate = new Date(end);
+  const minutesDifference = differenceInMinutes(endDate, startDate);
+  const pixelsPerMinute = 400 / 60;
+  const scheduleWidth = Math.round(minutesDifference * pixelsPerMinute);
+  return scheduleWidth;
+}
+
+export const isScheduleLive = (start, end) => {
+  const now = new Date();
   const startTime = parseISO(start);
   const endTime = parseISO(end);
-  const now = new Date();
-  const totalTime = 60 * 60 * 1000; // 1 hora en milisegundos
-  const timeRange = differenceInMilliseconds(endTime, startTime);
   const isLive = isWithinInterval(now, { start: startTime, end: endTime })
-  const programWidth = ((timeRange / totalTime) * 500).toFixed(3);
-  return {programWidth, isLive}
+  return isLive;
+}
 
+/**
+ * This function calculates the number of pixels to move to the left in order to display
+ * the timeline at the current time and represent it on the EPG. The result of this
+ * function is used to position the timeline at the current time in the EPG interface.
+ */
+export const calculateTimelinePosition = () => {
+  const elemento = document.getElementById('timeline');
+  const ancho = elemento.scrollWidth;
+  const horaActual = new Date();
+  const horaInicio = parse('00:00', 'HH:mm', new Date());
+  const minutosDiferencia = differenceInMinutes(horaActual, horaInicio);
+  const intervaloMinutos = 60;
+  return ((minutosDiferencia / intervaloMinutos) * 406);
 }

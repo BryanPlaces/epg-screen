@@ -1,16 +1,16 @@
 import React from 'react';
 import { format } from "date-fns";
-import { getTodayHours } from '../services/dates.jsx';
+import { getTodayHours } from '../helpers/datetimeHelpers';
 
 const TimesBar = () => {
   return (
-    <div className="times-wrapper">
+    <div id="timeline" className="times-wrapper">
       {getTodayHours().map((hora, index) => (
         <div
           key={ index }
           className='times-scrolling-wrapper'
           style={{
-            minWidth: "500px"
+            minWidth: "404px"
           }}
         >
           {format(hora, 'HH:mm')}

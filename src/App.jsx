@@ -1,23 +1,24 @@
 import React from 'react';
-import DatesBar from "./components/DatesBar";
-import TimesBar from "./components/TimesBar";
-import Epg from "./components/Epg";
+import { Schedules, DatesBar } from './components';
+import { useEpg } from './hooks/useEpg';
 
 function App() {
-  //const [channels, setChannels] = useState([]);
-  // useEffect(() => {
-  //   fetch(`http://localhost:1337/epg`)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setChannels(data.channels);
-  //   });
-  // }, []);
+  const { channels, schedules } = useEpg();
 
   return (
-    <div>
-      <DatesBar focusKey={'DATESBAR'} />
-      <Epg />
-    </div>
+    <>
+      <DatesBar />
+      <div className='epg-container'>
+        <div className="channel-list">
+          {channels.map(channel => (
+            <div key={channel.id} className="channel-container">
+              <img src={channel.logo} alt="" />
+            </div>
+          ))}
+        </div>
+        <Schedules schedules={schedules} />
+      </div>
+    </>
   );
 }
 

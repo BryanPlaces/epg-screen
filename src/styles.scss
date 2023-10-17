@@ -1,16 +1,33 @@
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: #202020;
+}
+
+#root {
+  height: 100%;
 }
 
 .epg-container {
   display: flex;
+  height: 93%;
 }
 
 .channel-list {
-  min-width: 100px; /* Ancho fijo para la lista de canales */
-  background-color: #f0f0f0;
+  width: 7%;
   display: flex;
   flex-direction: column;
+  height: 87.35%;
+  position: absolute;
+  background-color: #202020;
+  bottom: 0;
+  padding-bottom: 0.5%;
+
+  @media (max-width: 400px) {
+    width: 20%;
+  }
 }
 
 .channel {
@@ -18,25 +35,33 @@ body {
 }
 
 .program-list {
-  width: 100%;
+  width: 93%;
+  margin-left: auto;
+
+  @media (max-width: 400px) {
+    width: 80%;
+  }
 }
 
 .channel-programs {
   display: flex;
   align-items: center;
-  height: 95px;
-  gap: 1px;
-  margin: 3px 0;
+  margin: 0.1rem 0;
+  flex: 1;
 }
 
 .program {
   color: #FFFF;
   border: 1px solid #393939;
+  margin-right: 1px;
   height: 100%;
 
   &__focus {
     border: 1px solid red;
   }
+}
+.element:last-child {
+  margin-right: 0;
 }
 
 .program-test {
@@ -46,6 +71,8 @@ body {
   overflow-y: hidden;
   flex-shrink: 1;
   flex-grow: 1;
+  height: 99%;
+  position: relative;
 }
 
 .program-item {
@@ -57,12 +84,18 @@ body {
 }
 
 .channel-container {
-  min-height: 95px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex: 1;
   > img {
     width: 40px;
   }
+}
+
+.algo {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: yellow;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { init } from '@noriginmedia/norigin-spatial-navigation';
 import App from './App';
 import './styles.scss';
-import { init } from '@noriginmedia/norigin-spatial-navigation';
 
 init({
   debug: false,
