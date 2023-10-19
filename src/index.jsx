@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { init } from '@noriginmedia/norigin-spatial-navigation';
 import App from './App';
-import './styles.scss';
+import './styles/globalStyles.scss';
 
 init({
   debug: false,

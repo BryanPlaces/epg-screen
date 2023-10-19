@@ -1,35 +1,34 @@
-import React, { useRef } from 'react';
-import { FocusContext } from '@noriginmedia/norigin-spatial-navigation';
-import { useTimelinePosition } from '../../hooks/useTimelinePosition';
-import { withSpatialNavigation } from '../spatialNavigationHOC';
-import { TimesBar, ScheduleItem } from '..';
+import React from 'react';
+import { FocusContext, useFocusable } from '@noriginmedia/norigin-spatial-navigation';
+import { useTimeline } from '../../hooks/useTimeline';
+import { TimesBar, ScheduleRow } from '..';
+import { useXScroll } from '../../hooks/useScroll';
 
-const Schedules = ({ innerRef, scrollingRef, onAssetFocus, focusKey, schedules }) => {
-  const { timelinePos } = useTimelinePosition();
-  const firstLiveRef = useRef(false);
+const Timeline = () => {
+  const { timelinePos } = useTimeline();
+  return (
+    <div id="timeline" className='timeline' style={{ left:`${timelinePos}px` }}></div>
+  )
+}
 
-  const isFirstLive = () => {
-    if (!firstLiveRef.current) {
-      firstLiveRef.current = true;
-      return true;
-    }
-    return false;
-  };
+const Schedules = ({ schedules }) => {
+
+  const {scrollingRef, onAssetFocus} = useXScroll();
+  const { ref, focusKey } = useFocusable();
 
   return (
     <FocusContext.Provider value={focusKey}>
-      <div ref={innerRef} className="program-list">
-        <div ref={scrollingRef} id='container-id' className='program-test'>
-          <div id="algo" className='algo' style={{ left:`${timelinePos}px` }}></div>
-        <TimesBar />
-          {schedules.map(schedule => (
-            <div key={schedule.id} className="channel-programs">
-              {schedule.programs?.map((program, index) => {
-                return (
-                  <ScheduleItem key={index} program={program} isFirstLive={isFirstLive} onFocus={onAssetFocus}/>
-                )
-              })}
-            </div>
+      <div ref={ref} className="schedules-wrapper">
+        <div ref={scrollingRef} className='schedules'>
+          <TimesBar />
+          <Timeline />
+          {schedules.map((schedule, index) => (
+            <ScheduleRow
+              key={schedule.id}
+              schedule={schedule}
+              isFirstRow={index == 0 ? true : false}
+              onFocus={onAssetFocus}
+            />
           ))}
         </div>
       </div>
@@ -37,4 +36,4 @@ const Schedules = ({ innerRef, scrollingRef, onAssetFocus, focusKey, schedules }
   );
 }
 
-export default withSpatialNavigation(Schedules);
+export default Schedules;

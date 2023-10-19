@@ -33,7 +33,8 @@ export const getTodayHours = () => {
     end: endDate,
   });
 
-  return todayHours
+  const formattedHours = todayHours.map((hour) => format(hour, 'HH:mm'));
+  return formattedHours
 }
 
 export const formatTimeRange = (startDate, endDate) => {
@@ -81,11 +82,9 @@ export const isScheduleLive = (start, end) => {
  * function is used to position the timeline at the current time in the EPG interface.
  */
 export const calculateTimelinePosition = () => {
-  const elemento = document.getElementById('timeline');
-  const ancho = elemento.scrollWidth;
-  const horaActual = new Date();
-  const horaInicio = parse('00:00', 'HH:mm', new Date());
-  const minutosDiferencia = differenceInMinutes(horaActual, horaInicio);
-  const intervaloMinutos = 60;
-  return ((minutosDiferencia / intervaloMinutos) * 406);
+  const currentTime = new Date();
+  const startTime = parse('00:00', 'HH:mm', new Date());
+  const minutesDifference = differenceInMinutes(currentTime, startTime);
+  const intervalMinutes = 60;
+  return ((minutesDifference / intervalMinutes) * 406);
 }

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { getDates } from '../helpers/datetimeHelpers';
-import { withSpatialNavigation } from './spatialNavigationHOC';
 import './../styles/datebar.scss';
 import { useFocusable, FocusContext } from '@noriginmedia/norigin-spatial-navigation';
+import { useXScroll } from '../hooks/useScroll';
 
 const DateItem = ({ date, onFocus }) => {
   const { ref, focused } = useFocusable({ onFocus });
@@ -11,20 +11,19 @@ const DateItem = ({ date, onFocus }) => {
   )
 };
 
-const DatesBar = ({ innerRef, scrollingRef, onAssetFocus, focusKey }) => {
+const DatesBar = () => {
+  const {scrollingRef, onAssetFocus} = useXScroll();
+  const { ref, focusKey } = useFocusable();
+
   return (
     <FocusContext.Provider value={focusKey}>
-      <div ref={innerRef} className='dates-wrapper'>
+      <div ref={ref} className='dates-wrapper'>
         <div className='star-container'>
           <img src="/star.png" width={25} alt="" />
         </div>
-        <div ref={scrollingRef} className='dates-scrolling-wrapper'>
+        <div ref={scrollingRef} className='dates'>
           {getDates().map((dateFormated, index) => (
-            <DateItem
-              key={index}
-              date={dateFormated}
-              onFocus={onAssetFocus}
-            />
+            <DateItem key={index} date={dateFormated} onFocus={onAssetFocus} />
           ))}
         </div>
       </div>
@@ -32,4 +31,4 @@ const DatesBar = ({ innerRef, scrollingRef, onAssetFocus, focusKey }) => {
   )
 };
 
-export default withSpatialNavigation(DatesBar);
+export default DatesBar;

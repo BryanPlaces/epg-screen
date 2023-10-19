@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { calculateTimelinePosition } from '../helpers/datetimeHelpers';
-export function useTimelinePosition() {
+
+export function useTimeline() {
   const [timelinePos, setTimelinePos] = useState();
 
   useEffect(() => {

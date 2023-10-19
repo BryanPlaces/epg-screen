@@ -1,28 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { formatTimeRange, getProgramTimeData } from '../../helpers/datetimeHelpers';
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation';
-import { useScheduleStatus } from '../../hooks/useScheduleStatus';
+import { useIsliveNow } from '../../hooks/useIsliveNow';
 
-const ScheduleItem = ({program, isFirstLive, onFocus}) => {
-  const programWidth = getProgramTimeData(program.start, program.end);
-  const { scheduleStatus } = useScheduleStatus(program.start, program.end);
-  const { ref, focused, focusSelf } = useFocusable({ onFocus });
-
-  useEffect(() => {
-    if (scheduleStatus && isFirstLive()) {
-      focusSelf();
-    }
-  }, []);
+const ScheduleItem = ({program, isFirstRow, onFocus}) => {
+  const [programWidth] = useState(getProgramTimeData(program.start, program.end));
+  const { ref, focused, focusSelf, focusKey } = useFocusable({
+    onFocus,
+  });
+  const { isliveNow } = useIsliveNow(
+    program.start,
+    program.end,
+    isFirstRow,
+    focusSelf,
+    focusKey
+  );
 
   return (
-    <div ref={ref} className={`program ${focused ? 'program__focus' : ''}`}
+    <div id={focusKey} ref={ref} className={`schedule-wrapper ${focused ? 'schedule-wrapper__focus' : ''}`}
       style={{
         minWidth:`${programWidth}px`,
-        maxWidth:`${programWidth}px`,
-        backgroundColor:`${scheduleStatus? '#393939':'#111111'}`
+        backgroundColor:`${isliveNow? '#393939':'#111111'}`
       }}
     >
-      <div className='program-item'>
+      <div className='schedule'>
         <span>{program.title}</span>
         <span>{ formatTimeRange(program.start, program.end) }</span>
       </div>

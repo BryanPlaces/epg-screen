@@ -5,6 +5,12 @@ export const fetchChannels = async() => {
 
   const parsedData = channels.reduce(
     (result, channel) => {
+
+      const updatedSchedules = channel.schedules.map((schedule, index) => {
+        const uniqueId = `${channel.id}_${index}`;
+        return { ...schedule, id: uniqueId };
+      });
+
       result.channels.push({
         id: channel.id,
         title: channel.title,
@@ -13,7 +19,7 @@ export const fetchChannels = async() => {
 
       result.schedules.push({
         id: `${channel.id}_schedule`,
-        programs: channel.schedules
+        programs: updatedSchedules
       });
       return result;
     },
