@@ -13,10 +13,15 @@ Install the epg-screen proyect with git clone
   npm install
 ```
 
-After this to run the proyect you will need to run first this instruccion in your console:
+Before to run the proyect, execute this command in your console to run the update & run mock-api:
 ```bash
   npm run start:demo
 ```
+You should see the server start on port 1337.
+```bash
+  Mock service running at http://localhost:1337
+```
+
 In another console you will run this command to watch the epg-screen:
 ```bash
   npm run watch
