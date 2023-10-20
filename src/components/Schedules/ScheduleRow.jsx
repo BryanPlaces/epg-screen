@@ -2,7 +2,6 @@ import React from 'react';
 import { ScheduleItem } from '..';
 
 const ScheduleRow = ({schedule, isFirstRow, onFocus}) => {
-
   return (
     <div className="schedules-row">
       {schedule.programs?.map((program, index) => (

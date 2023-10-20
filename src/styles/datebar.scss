@@ -1,24 +1,27 @@
 .dates-wrapper {
-  max-width: 100%;
   display: flex;
-  height: 7%;
+  height: 80px;
   align-items: center;
-  border-bottom: 1px solid #393939;
+
+  @media (max-width: 768px) {
+    height: 60px;
+  }
 }
 
 .dates {
   overflow-x: hidden;
   overflow-y: hidden;
-  flex-shrink: 1;
-  flex-grow: 1;
   display: flex;
   flex-direction: row;
-  gap: 7px;
+  gap: 1rem;
+  text-align: center;
+  user-select: none;
 }
 
 .date-item {
   color: #9B9B9B;
   padding: 0 10px;
+  min-width: 60px;
   &__focus {
     @extend .date-item;
     color: #FFFFFF
@@ -26,17 +29,25 @@
 }
 
 .star-container {
-  height: 100%;
-  min-width: 7%;
+  min-width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    min-width: 50px;
+  }
 }
 
 .times-wrapper {
   display: flex;
   align-items: center;
-  height: 5%;
   color: #FFFFFF;
-  padding-top: 7px;
+}
+
+.time-item {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  gap: 1px;
 }

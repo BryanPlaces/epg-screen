@@ -5,7 +5,7 @@ const TimesBar = () => {
   return (
     <div id="times" className="times-wrapper">
       { getTodayHours().map((hour, index) => (
-        <div key={ index } style={{ minWidth: "404px" }} >
+        <div key={ index } className='time-item' style={{ minWidth: "300px", maxWidth: "300px" }} >
           { hour }
         </div>
       ))}

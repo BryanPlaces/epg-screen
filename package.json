@@ -8,7 +8,7 @@
     "eject": "react-scripts eject",
     "watch": "react-scripts start",
     "start:mock-api": "./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
-    "start": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api"
+    "start:demo": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api"
   },
   "keywords": [],
   "author": "",

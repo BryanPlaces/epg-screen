@@ -11,6 +11,8 @@ import {
   differenceInMinutes,
 } from 'date-fns';
 
+const WIDTH_TIMEBAR = 300;
+
 export const getDates = () => {
   const dates = [];
   const today = startOfToday();
@@ -59,11 +61,11 @@ export const formatTimeRange = (startDate, endDate) => {
  * @param {*} end
  * @returns
  */
-export const getProgramTimeData = (start, end) => {
-    const startDate = new Date(start);
+export const getScheduleSize = (start, end) => {
+  const startDate = new Date(start);
   const endDate = new Date(end);
   const minutesDifference = differenceInMinutes(endDate, startDate);
-  const pixelsPerMinute = 400 / 60;
+  const pixelsPerMinute = WIDTH_TIMEBAR / 60;
   const scheduleWidth = Math.round(minutesDifference * pixelsPerMinute);
   return scheduleWidth;
 }
@@ -86,5 +88,5 @@ export const calculateTimelinePosition = () => {
   const startTime = parse('00:00', 'HH:mm', new Date());
   const minutesDifference = differenceInMinutes(currentTime, startTime);
   const intervalMinutes = 60;
-  return ((minutesDifference / intervalMinutes) * 406);
+  return ((minutesDifference / intervalMinutes) * WIDTH_TIMEBAR);
 }

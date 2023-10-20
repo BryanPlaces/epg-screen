@@ -13,11 +13,10 @@ const NowButton = () => {
     onEnterPress: onEnter
   });
 
-
   return (
     <FocusContext.Provider value={focusKey}>
       <div ref={ref} className={`button-wrapper`}>
-        <button className={`now-button ${focused ? 'now-button__focus' : ''} `}>NOW</button>
+        <button onClick={onEnter} className={`now-button ${focused ? 'now-button__focus' : ''} `}>NOW</button>
       </div>
     </FocusContext.Provider>
   )

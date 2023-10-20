@@ -1,3 +1,5 @@
+import { getScheduleSize } from "../helpers/datetimeHelpers";
+
 export const fetchChannels = async() => {
   const response = await fetch(`http://localhost:1337/epg`)
   const json = await response.json()
@@ -8,13 +10,14 @@ export const fetchChannels = async() => {
 
       const updatedSchedules = channel.schedules.map((schedule, index) => {
         const uniqueId = `${channel.id}_${index}`;
-        return { ...schedule, id: uniqueId };
+        const widthSchedule = getScheduleSize(schedule.start, schedule.end);
+        return { ...schedule, id: uniqueId, width: widthSchedule };
       });
 
       result.channels.push({
         id: channel.id,
         title: channel.title,
-        logo: 'hbo_logo.png',
+        logo: `logos/${channel.id}_logo.jpg`,
       });
 
       result.schedules.push({

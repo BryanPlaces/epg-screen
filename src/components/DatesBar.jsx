@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import { getDates } from '../helpers/datetimeHelpers';
 import './../styles/datebar.scss';
 import { useFocusable, FocusContext } from '@noriginmedia/norigin-spatial-navigation';
-import { useXScroll } from '../hooks/useScroll';
+import { useXScroll, useMouseXScroll } from '../hooks/useScroll';
 
 const DateItem = ({ date, onFocus }) => {
   const { ref, focused } = useFocusable({ onFocus });
@@ -13,6 +13,7 @@ const DateItem = ({ date, onFocus }) => {
 
 const DatesBar = () => {
   const {scrollingRef, onAssetFocus} = useXScroll();
+  const { handleMouseDown, handleMouseMove, handleMouseUp } = useMouseXScroll(scrollingRef);
   const { ref, focusKey } = useFocusable();
 
   return (
@@ -21,7 +22,11 @@ const DatesBar = () => {
         <div className='star-container'>
           <img src="/star.png" width={25} alt="" />
         </div>
-        <div ref={scrollingRef} className='dates'>
+        <div ref={scrollingRef} className='dates'
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+        >
           {getDates().map((dateFormated, index) => (
             <DateItem key={index} date={dateFormated} onFocus={onAssetFocus} />
           ))}

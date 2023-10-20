@@ -1,20 +1,18 @@
 .epg-wrapper {
   display: flex;
-  height: 87%;
+  flex-direction: row;
+  @media (max-width: 768px) {
+    height: 800px;
+  }
 }
 
 // Channels styles
 .channels-wrapper {
-  width: 7%;
+  width: 100px;
   display: flex;
   flex-direction: column;
-  height: 80%;
-  position: absolute;
   background-color: #202020;
-  bottom: 0;
-  @media (max-width: 400px) {
-    width: 20%;
-  }
+  margin-top: 50px;
 }
 
 .channel {
@@ -22,71 +20,61 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+  width: 100px;
+  min-height: 110px;
+  max-height: 110px;
+  border-top: 2px solid #393939;
+  //border-bottom: 1px solid #393939;
   > img {
     width: 40px;
+  }
+
+  @media (max-width: 768px) {
+    width: 50px;
   }
 }
 
 // Schedules styles
-.schedules-wrapper {
-  width: 93%;
-  margin-left: auto;
-
-  @media (max-width: 400px) {
-    width: 80%;
-  }
-}
-
 .schedules {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: hidden;
-  flex-shrink: 1;
-  flex-grow: 1;
-  height: 99%;
   position: relative;
 }
 
 .schedules-row {
   display: flex;
   align-items: center;
-  margin: 0.1rem 0;
-  flex: 1;
+  margin: 1px 0;
+  height: 110px;
+  user-select: none;
 }
 
 .schedule-wrapper {
   color: #FFFF;
   border: 1px solid #393939;
-  margin-right: 1px;
+  gap: 1px;
   height: 100%;
 
   &__focus {
     border: 1px solid red;
   }
 }
-.schedule-wrapper:last-child {
-  margin-right: 0;
-}
 
 .schedule {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  padding-left: 20px;
-  padding-top: 20px;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  //min-height: 90px;
 }
 
 // Timeline Styles
-
 .timeline {
   position: absolute;
-  width: 2px;
+  width: 4px;
   height: 100%;
   background-color: yellow;
-}
-
-.test {
-  display: flex;
-  height: 100%;
 }
